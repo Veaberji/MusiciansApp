@@ -1,8 +1,9 @@
-﻿using MusiciansAPP.Domain.Constraints;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using MusiciansAPP.Domain.Constraints;
 
 namespace MusiciansAPP.Domain;
 
@@ -25,7 +26,14 @@ public class Album : Entity
 
     [Range(AlbumConstraints.PlayCountMinValue, int.MaxValue)]
     public int? PlayCount { get; set; }
+
+    public DateOnly DateCreated { get; set; }
+
+    [Column(TypeName = "ntext")]
+    public string Description { get; set; }
+
     public Artist Artist { get; set; }
+
     public List<Track> Tracks { get; set; }
 
     public bool IsAlbumHasPlayCount()
@@ -38,6 +46,11 @@ public class Album : Entity
         return !string.IsNullOrWhiteSpace(ImageUrl);
     }
 
+    public bool IsAlbumHasDescription()
+    {
+        return Description is not null;
+    }
+
     public bool IsAlbumTracksDetailsUpToDate()
     {
         return Tracks.Any() && Tracks.All(track => track.IsTrackHasDurationInSeconds());
@@ -45,7 +58,7 @@ public class Album : Entity
 
     public bool IsAlbumDetailsUpToDate()
     {
-        return IsAlbumHasImageUrl() && IsAlbumTracksDetailsUpToDate();
+        return IsAlbumHasImageUrl() && IsAlbumTracksDetailsUpToDate() && IsAlbumHasDescription();
     }
 
     protected override bool IsFull()

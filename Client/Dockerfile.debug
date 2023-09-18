@@ -1,0 +1,7 @@
+FROM node:18-alpine
+WORKDIR /frontend
+RUN npm i -g @angular/cli@13
+EXPOSE 4200
+# RUN chown -R node:node /frontend
+# USER node
+CMD [ "npm", "run", "start" ]

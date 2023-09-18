@@ -2,9 +2,15 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { NgxLoggerLevel } from 'ngx-logger';
+
 export const environment = {
-  artistsApiUrl: 'https://localhost:7093/api/artists/',
+  title: 'MusiciansAPP',
+  baseApiUrl: 'https://localhost:7093/api/',
   production: false,
+  logging: {
+    level: NgxLoggerLevel.DEBUG,
+  },
 };
 
 /*

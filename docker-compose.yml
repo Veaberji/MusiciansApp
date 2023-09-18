@@ -1,0 +1,36 @@
+services:
+  client:
+    image: musicians-client
+    build:
+      context: ./Client
+      args:
+        - CONFIG=production
+    ports:
+      - 4200:80
+    depends_on:
+      - api
+
+  api:
+    image: musicians-api
+    build:
+      context: ./MusiciansAPP
+      args:
+        - CONFIG=Release
+        - API_KEY=<your api key>
+    ports:
+      - 7093:7093
+    depends_on:
+      - db
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: <your db password>
+    ports:
+      - 1433:1433
+    volumes:
+      - musicians-db:/var/opt/mssql
+
+volumes:
+  musicians-db:

@@ -1,21 +1,21 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MusiciansAPP.API.Extensions.Configuration;
-using MusiciansAPP.API.Extensions.DependencyInjection;
+using MusiciansAPP.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
+var config = builder.Configuration;
 
-
-builder.BindObjects();
+builder.SetUpLogging();
+config.BindObjects();
 services.AddAppCors();
-services.AddAppServices(builder.Configuration);
-services.AddDbServices(builder.Configuration);
+services.AddAppServices(config);
+services.AddDbServices(config);
 services.AddControllers();
 
-
 var app = builder.Build();
+await app.SetUpDB();
 
 if (app.Environment.IsDevelopment())
 {

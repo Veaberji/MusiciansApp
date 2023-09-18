@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/artists', pathMatch: 'full' },
   {
     path: 'artists',
-    loadChildren: () => import('./artists/artist-routing.module').then((m) => m.ArtistRoutingModule),
+    loadChildren: () => import('./artists/artists.module').then((m) => m.ArtistsModule),
   },
   {
     path: 'albums',
-    loadChildren: () => import('./albums/album-routing.module').then((m) => m.AlbumRoutingModule),
+    loadChildren: () => import('./albums/albums.module').then((m) => m.AlbumsModule),
   },
   {
     path: 'not-found',

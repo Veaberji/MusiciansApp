@@ -5,9 +5,16 @@ namespace MusiciansAPP.DAL.DBDataProvider;
 
 public class AppDbContext : DbContext
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+    public AppDbContext(DbContextOptions<AppDbContext> options)
+        : base(options)
     {
     }
+
+    public DbSet<Artist> Artists { get; set; }
+
+    public DbSet<Album> Albums { get; set; }
+
+    public DbSet<Track> Tracks { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -15,9 +22,11 @@ public class AppDbContext : DbContext
             .HasMany(a => a.SimilarArtists)
             .WithMany(a => a.ReverseSimilarArtists)
             .UsingEntity(e => e.ToTable("SimilarArtists"));
-    }
 
-    public DbSet<Artist> Artists { get; set; }
-    public DbSet<Album> Albums { get; set; }
-    public DbSet<Track> Tracks { get; set; }
+        modelBuilder.Entity<Album>(builder =>
+        {
+            builder.Property(a => a.DateCreated)
+                .HasConversion<DateOnlyConverter>();
+        });
+    }
 }

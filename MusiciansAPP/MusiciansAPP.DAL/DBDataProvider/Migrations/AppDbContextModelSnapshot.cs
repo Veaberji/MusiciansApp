@@ -43,8 +43,14 @@ namespace MusiciansAPP.DAL.DBDataProvider.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ArtistId")
+                    b.Property<Guid?>("ArtistId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("ntext");
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
@@ -73,12 +79,11 @@ namespace MusiciansAPP.DAL.DBDataProvider.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Biography")
-                        .HasMaxLength(10000)
                         .HasColumnType("ntext");
 
                     b.Property<string>("ImageUrl")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -99,7 +104,7 @@ namespace MusiciansAPP.DAL.DBDataProvider.Migrations
                     b.Property<Guid?>("AlbumId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ArtistId")
+                    b.Property<Guid?>("ArtistId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int?>("DurationInSeconds")
@@ -141,9 +146,7 @@ namespace MusiciansAPP.DAL.DBDataProvider.Migrations
                 {
                     b.HasOne("MusiciansAPP.Domain.Artist", "Artist")
                         .WithMany("Albums")
-                        .HasForeignKey("ArtistId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ArtistId");
 
                     b.Navigation("Artist");
                 });
@@ -156,9 +159,7 @@ namespace MusiciansAPP.DAL.DBDataProvider.Migrations
 
                     b.HasOne("MusiciansAPP.Domain.Artist", "Artist")
                         .WithMany("Tracks")
-                        .HasForeignKey("ArtistId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ArtistId");
 
                     b.Navigation("Album");
 

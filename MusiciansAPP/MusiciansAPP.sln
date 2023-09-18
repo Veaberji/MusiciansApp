@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusiciansAPP.DAL", "Musicia
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusiciansAPP.BL.UnitTests", "MusiciansAPP.BL.UnitTests\MusiciansAPP.BL.UnitTests.csproj", "{E39D9019-9A51-4FD7-A527-70EAB677F349}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusiciansAPP.API.UnitTests", "MusiciansAPP.API.UnitTests\MusiciansAPP.API.UnitTests.csproj", "{0F93D7DD-4FA5-4DD0-B95D-43BB85C9BA53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusiciansAPP.IntegrationTests", "MusiciansAPP.IntegrationTests\MusiciansAPP.IntegrationTests.csproj", "{AAE13259-355F-4DA8-8587-783696DAB79B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{E39D9019-9A51-4FD7-A527-70EAB677F349}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E39D9019-9A51-4FD7-A527-70EAB677F349}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E39D9019-9A51-4FD7-A527-70EAB677F349}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F93D7DD-4FA5-4DD0-B95D-43BB85C9BA53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F93D7DD-4FA5-4DD0-B95D-43BB85C9BA53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F93D7DD-4FA5-4DD0-B95D-43BB85C9BA53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F93D7DD-4FA5-4DD0-B95D-43BB85C9BA53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAE13259-355F-4DA8-8587-783696DAB79B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAE13259-355F-4DA8-8587-783696DAB79B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAE13259-355F-4DA8-8587-783696DAB79B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAE13259-355F-4DA8-8587-783696DAB79B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

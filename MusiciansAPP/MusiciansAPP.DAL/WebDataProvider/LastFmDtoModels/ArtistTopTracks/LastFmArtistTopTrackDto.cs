@@ -8,5 +8,5 @@ internal class LastFmArtistTopTrackDto
     public string Name { get; set; }
 
     [JsonProperty(PropertyName = "playcount")]
-    public int PlayCount { get; set; }
+    public int? PlayCount { get; set; }
 }
